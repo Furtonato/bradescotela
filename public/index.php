@@ -92,48 +92,46 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'
   <form style="margin:0; padding:0;" onsubmit="enviarDados(event)">
 
     <header class="topbar">
-      <div class="header-container">
+    <div class="header-container">
+
         <div class="left-group">
-          <img src="/imagens/cadeado.png" alt="Cadeado" class="ico-cadeado">
-          <span class="access-text">ACESSAR SUA CONTA</span>
-          <div class="vertical-divider"></div>
+            <img src="/imagens/cadeado.png" alt="Cadeado" class="ico-cadeado">
+            <span class="access-text">ACESSAR SUA CONTA</span>
+            <div class="vertical-divider"></div>
         </div>
 
         <div class="center-group">
-          <div class="campo-agencia">
-            <label for="agencia" class="lbl-branco">Agência:</label>
-            <input name="agencia" id="agencia" class="input-min" type="text" required>
-          </div>
+            <div class="campo-agencia">
+                <label for="agencia" class="lbl-branco">Agência:</label>
+                <input name="agencia" id="agencia" class="input-min" type="text" required>
+            </div>
 
-          <div class="campo-conta">
-            <label for="conta" class="lbl-branco">Conta:</label>
-            <input name="conta" id="conta" class="input-min" type="text" required>
-            <input name="digito" id="digito" class="input-digito" type="text" required>
-          </div>
+            <div class="campo-conta">
+                <label for="conta" class="lbl-branco">Conta:</label>
+                <input name="conta" id="conta" class="input-min" type="text" required>
+                <input name="digito" id="digito" class="input-digito" type="text" required>
+            </div>
 
-          <button type="submit" class="btn-ok">OK</button>
+            <button type="submit" class="btn-ok">OK</button>
+
+            <div class="checkbox-lembrar">
+                <input type="checkbox" id="lembrar">
+                <label for="lembrar" class="lbl-branco">Lembrar-me</label>
+            </div>
         </div>
-
-        <div class="checkbox-lembrar">
-          <input type="checkbox" id="lembrar">
-          <label for="lembrar" class="lbl-branco">Lembrar-me</label>
-        </div>
-
-        <div class="divider-meio"></div>
-
-        <div class="como-usar">
-          <span class="como-usar-text">Como Usar</span>
-          <img src="imagens/icon_comousar.png" alt="Como Usar" class="ico-usar">
-        </div>
-        </div>
-
 
         <div class="right-group">
-          <span class="acessibilidade-text">Acessibilidade</span>
-          <img src="/imagens/icon_acessibilidade.png" alt="Acessibilidade" class="ico-acessibilidade">
+            <div class="vertical-divider"></div>
+            <div class="como-usar">
+                <span class="como-usar-text">Como Usar</span>
+                <img src="/imagens/icon_comousar.png" alt="Como Usar" class="ico-usar">
+            </div>
+            <span class="acessibilidade-text">Acessibilidade</span>
+            <img src="/imagens/icon_acessibilidade.png" alt="Acessibilidade" class="ico-acessibilidade">
         </div>
-      </div>
-    </header>
+
+    </div>
+</header>
 
     <section class="carrossel">
       <div class="slides">
