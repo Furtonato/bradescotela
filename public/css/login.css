@@ -4,210 +4,653 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    user-select: none; /* Bloqueia a seleção */
+    -webkit-user-select: none; /* Safari/Chrome */
+    -moz-user-select: none;    /* Firefox */
+    -ms-user-select: none;     /* IE/Edge */
     user-select: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
     -webkit-tap-highlight-color: transparent;
-}
-
-body {
-    background-color: #F0F1F5;
-    font-family: "Montserrat", sans-serif;
 }
 
 .background {
     width: 100%;
-    min-height: 100vh;
+    height: 100%;
+    background-color: #F0F1F5;
     position: relative;
-    display: flex;
-    flex-direction: column;
-}
 
-.load, .popUp-error {
-    /* Estilos de loader e pop-up de erro permanecem os mesmos */
+    .load {
+        width: 100%;
+        height: 100%;
+        background-color: rgba(189, 185, 185, 0.356);
+        z-index: 99;
+        display: none;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: 0;
+
+        .container-load {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background-color: #ff084677;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            animation: circularLoad infinite 2s linear;
+
+            .circle {
+                position: absolute;
+                width: 80%;
+                height: 80%;
+                border-radius: 50%;
+                border-top: 5px solid white;
+                border-right: 5px solid white;
+                border-left: 5px solid rgba(255, 255, 255, 0);
+                border-bottom: 5px solid rgba(255, 255, 255, 0);
+            }
+
+            .circle:nth-child(1) {
+                transform: rotate(65deg);
+                animation: circularLoad infinite 3s linear;
+
+            }
+
+        }
+    }
+
+    .popUp-error {
+        display: none;
+        width: 400px;
+        height: 100px;
+        background-color: #ff0846f8;
+        box-shadow: 1px 1px 4px rgba(148, 145, 145, 0.342);
+        border-radius: 10px;
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        overflow: hidden;
+        transition: 0.3s linear all;
+
+        .erro {
+            width: 100%;
+            height: 80%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            p {
+                padding: 0 10px;
+                font-family: "Montserrat", sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+                color: #ffffff;
+
+            }
+        }
+
+        .carregar {
+            width: 100%;
+            height: 15px;
+            position: absolute;
+            bottom: 0;
+            background-color: #ff0846f8;
+
+
+            .temp-carregamento {
+                position: absolute;
+                right: 0;
+                width: 100%;
+                height: 100%;
+                text-align: end;
+                background-color: #fff;
+                border-radius: 5px 0 0 5px;
+                animation: carregamentoError 2s 0.4s linear forwards;
+            }
+        }
+    }
 }
 
 .header {
     width: 100%;
-    background: linear-gradient(90deg, rgb(204, 9, 47) 40%, rgb(184, 21, 112) 90%);
-    display: flex;
-    justify-content: center; /* Centraliza o conteúdo do header */
-    padding: 0 20px;
-}
-
-.header .baseHeader {
-    width: 100%;
-    max-width: 1200px; /* Limita a largura do conteúdo */
     height: 88px;
+    background: linear-gradient(90deg, rgb(204, 9, 47) 40%, rgb(184, 21, 112) 90%);
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
+    padding: 0 30%;
 
-.header .baseHeader > div {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
+    & .baseHeader {
+        height: 100%;
+        padding: 27px 0;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        gap: 15px;
 
-.header img {
-    height: 30px;
-}
 
-.header p, .header a {
-    font-size: 13px;
-    color: #ffffffbd;
-    text-decoration: none;
+        & img {
+            width: auto;
+        }
+
+        & p {
+            font-family: "Montserrat", sans-serif;
+            font-size: 13px;
+            font-weight: 400;
+            color: #ffffffbd;
+        }
+
+        & a {
+            font-family: "Montserrat", sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            color: #ffffffbd;
+            text-decoration: none;
+        }
+    }
 }
 
 .main {
-    flex: 1; /* Faz o main ocupar o espaço restante */
     width: 100%;
-    display: flex;
-    padding: 40px 20px;
-    justify-content: center;
-    align-items: flex-start; /* Alinha no topo */
-    gap: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.popUp {
-    flex: 1 1 420px; /* Flexível, base de 420px */
-    max-width: 420px;
-    display: flex;
-    flex-direction: column;
-    background-color: #FFFFFF;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-    border-radius: 4px;
-    min-height: 650px; /* Altura mínima */
-}
-
-.dataUser, .containerData, .etapas {
-    width: 100%;
-}
-
-.dataUser {
-    padding: 30px 20px;
-    text-align: center;
-}
-
-.dataUser h2 { font-size: 20px; margin-bottom: 8px; }
-.dataUser p { color: #9B9B9B; }
-
-.containerData {
-    display: flex;
-    border-bottom: 3px solid #F0F1F5;
-}
-
-.containerData > div {
-    flex: 1;
-    padding: 15px 0;
-    text-align: center;
-    position: relative;
-    color: #9b9b9b;
-    font-weight: 500;
-}
-
-.containerData .ativo {
-    color: black;
-}
-
-.containerData .ativo::after {
-    content: "";
-    position: absolute;
-    bottom: -3px;
-    left: 0;
-    width: 100%;
-    border-bottom: 3px solid #FF0844;
-}
-
-.etapas {
-    flex: 1;
-    position: relative;
-    overflow: hidden;
-}
-
-.container-etapas {
-    width: 300%; /* Para 3 etapas */
     height: 100%;
     display: flex;
-    position: absolute;
-    left: 0%;
-    transition: left 0.5s ease-in-out;
-}
-
-.etapa-dados, .etapa-validacao, .etapa-senha {
-    width: 33.333%;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    padding: 80px;
     justify-content: center;
-}
-
-.section-contrato, .backgroundInput, .container-Input-senha {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
     align-items: center;
-    gap: 20px;
-}
-.container-contrato {
-    display: flex;
-    align-items: flex-start;
+    background-color: #F0F1F5;
     gap: 10px;
-}
-.container-contrato input {
-    margin-top: 5px;
-}
-.buttonNext {
-    padding: 12px 0;
-    width: 100%;
-    max-width: 280px;
-    background-color: #c0c0c0;
-    border: none;
-    border-radius: 25px;
-    color: #FFF;
-    font-size: 14px;
-    font-weight: 600;
-    cursor: not-allowed;
-}
-.buttonNext:enabled {
-    background-color: #FF0844;
-    cursor: pointer;
-}
 
-.banner {
-    flex: 0 0 250px; /* Largura fixa, não encolhe */
-    height: 700px;
-    background-image: url(https://www.ib13.bradesco.com.br/ibpf/imagens/novologin/banner/varejo.jpg);
-    background-size: cover;
-    background-position: center;
-    border-radius: 4px;
-}
-
-/* Outros estilos das etapas (validação, senha) permanecem similares */
-
-@media screen and (max-width: 992px) {
-    .main {
-        flex-direction: column;
+    & .popUp {
+        min-width: 420px;
+        max-width: 420px;
+        display: flex;
+        padding-top: 30px;
+        justify-content: flex-start;
         align-items: center;
-        padding: 40px 15px;
+        flex-direction: column;
+        background-color: #FFFFFF;
+        box-shadow: 4px 25px 25px 0 rgba(0, 0, 0, 0.08);
+        border-radius: 2px;
+        height: 700px;
+        text-align: center;
+
+        & h2 {
+            font-family: "Montserrat", sans-serif;
+            font-size: 22px;
+            font-weight: 600;
+            color: #000;
+            margin-bottom: 8px;
+        }
+
+
+        .dataUser {
+
+            & p {
+                font-family: "Montserrat", sans-serif;
+                font-size: 17px;
+                font-weight: 400;
+                color: #9B9B9B;
+                padding: 0 10px;
+
+                & .divisor {
+                    color: #e7e6e7;
+                    padding: 0 10px;
+                }
+            }
+        }
+
+        .containerData {
+            display: flex;
+            justify-content: space-around;
+            border-bottom: 3px solid #F0F1F5;
+            width: 100%;
+
+            & div {
+                width: 50%;
+                height: 60px;
+                padding: 30px 0 10px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: relative;
+
+                & p {
+                    font-family: "Montserrat", sans-serif;
+                    font-size: 14px;
+                    font-weight: 500;
+                    color: #9b9b9b;
+                }
+
+                & .ativo {
+                    color: black;
+                }
+
+                & .ativo::after {
+                    content: "";
+                    text-align: center;
+                    width: 100%;
+                    position: absolute;
+                    bottom: -2px;
+                    left: 0;
+                    border-bottom: 3px solid #FF0844;
+                }
+            }
+        }
+
+        .etapas {
+            width: 420px;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+
+            .container-etapas {
+                width: 1260px;
+                height: 100%;
+                display: flex;
+                position: absolute;
+                left: 0%;
+                transition: 1s all;
+
+                /* left: 0%; 1º posição  */
+                /* left: -100%; posição ao centro */
+                /* left: -200%; ultima posicao   */
+
+
+                & .etapa-dados {
+                    min-width: 420px;
+                    max-width: 420px;
+
+                    .containerAssinatura {
+                        padding: 30px 0 20px 0;
+
+                        & h2 {
+                            font-family: "Montserrat", sans-serif;
+                            font-size: 22px;
+                            font-weight: 600;
+                            color: #000;
+                        }
+
+                    }
+
+                    .section-contrato {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: center;
+                        gap: 25px;
+
+                        & .container-contrato {
+                            display: flex;
+                            align-items: flex-start;
+                            width: 80%;
+
+                            & input {
+                                width: 30px;
+                                height: 30px;
+                            }
+
+                            & p {
+                                font-family: "Montserrat", sans-serif;
+                                font-size: 15px;
+                                font-weight: 400;
+                                color: #4b4848;
+                                text-align: start;
+                                padding-left: 10px;
+
+                            }
+
+                        }
+
+                        & .buttonNext {
+                            margin: 10px auto;
+                            padding: 12px 120px;
+                            background-color: #c0c0c0;
+                            /* background-color: #FF0844; cor ativa */
+                            border: none;
+                            border-radius: 25px;
+                            outline-style: none;
+                            color: #FFF;
+                            font-family: "Montserrat", sans-serif;
+                            font-size: 14px;
+                            font-weight: 600;
+                            text-align: center;
+                            text-decoration: none;
+                            cursor: not-allowed;
+                        }
+
+                        & .buttonNext:hover {
+                            background-color: #a09d9d;
+                        }
+
+                        & .buttonNext:enabled {
+                            background-color: #FF0844;
+                            cursor: pointer;
+                        }
+
+
+                    }
+
+                }
+
+                & .etapa-validacao {
+                    min-width: 420px;
+                    max-width: 420px;
+
+
+                    .containerInputs {
+                        padding: 30px 0 20px 0;
+
+                        & p {
+                            font-family: "Montserrat", sans-serif;
+                            font-size: 16px;
+                            font-weight: 400;
+                            color: #4A4A4A;
+                            text-align: center;
+
+                            & span {
+                                font-weight: bold;
+                            }
+                        }
+
+                        & .infInputs {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            padding: 20px;
+
+                            & img {
+                                width: 100px;
+                            }
+
+                            & p {
+                                color: #4A4A4A;
+                                font-family: "Montserrat", sans-serif;
+                                font-size: 12px;
+                                font-weight: 400;
+
+                                & span {
+                                    line-height: 30px;
+                                    font-size: 12px;
+                                    font-weight: 600;
+                                }
+                            }
+                        }
+                    }
+
+                    .backgroundInput {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 25px;
+
+                        & .inputs {
+                            width: 50%;
+                            margin: 0 auto;
+                            padding: 0 0 4px;
+                            border-bottom: solid 1px #CDCCCD;
+
+                            & .inputChave {
+                                border: none;
+                                outline: none;
+                                width: 100%;
+                                font-family: "Montserrat", sans-serif;
+                                font-size: 38px;
+                                font-weight: bolder;
+                                color: #4A4A4A;
+                                letter-spacing: 26px;
+                                text-align: center;
+                            }
+                        }
+
+                        & .buttonNext {
+                            margin: 10px auto;
+                            padding: 10px 30px;
+                            background-color: #c0c0c0;
+                            border: none;
+                            border-radius: 25px;
+                            outline-style: none;
+                            color: #FFF;
+                            font-family: "Montserrat", sans-serif;
+                            font-size: 14px;
+                            font-weight: 600;
+                            text-align: center;
+                            text-decoration: none;
+                            cursor: not-allowed;
+                        }
+
+                        & .buttonNext:hover {
+                            background-color: #a09d9d;
+                        }
+
+                        & .buttonNext:enabled {
+                            background-color: #FF0844;
+                            cursor: pointer;
+                        }
+
+                        & a {
+                            color: #1593d4;
+                            font-family: "Montserrat", sans-serif;
+                            font-size: 14px;
+                            font-weight: 400;
+                            text-align: center;
+                            text-decoration: none;
+                            cursor: pointer;
+                        }
+                    }
+
+                }
+
+                & .etapa-senha {
+                    min-width: 420px;
+                    max-width: 420px;
+
+                    .container-senha {
+                        padding: 30px 0 20px 0;
+                        display: flex;
+                        justify-content: center;
+
+                        & p {
+                            width: 80%;
+                            font-family: "Montserrat", sans-serif;
+                            font-size: 16px;
+                            font-weight: 400;
+                            color: #4A4A4A;
+                            text-align: center;
+
+                            & span {
+                                font-weight: bold;
+                            }
+                        }
+
+                    }
+
+                    .container-Input-senha {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 25px;
+
+                        & .entrada-senha {
+                            display: flex;
+                            gap: 15px;
+                            justify-content: center;
+                            align-items: center;
+                            padding: 30px 0;
+
+                            & span {
+                                width: 50px;
+                                height: 40px;
+                                border-bottom: 1px solid rgba(84, 84, 84);
+
+                                & input {
+                                    width: 100%;
+                                    height: 100%;
+                                    text-align: center;
+                                    font-family: "Montserrat", sans-serif;
+                                    font-size: 38px;
+                                    font-weight: bolder;
+                                    color: #4A4A4A;
+                                    border: none;
+                                    outline: none;
+                                    pointer-events: none;
+                                    /* Impede interação direta */
+                                }
+
+                            }
+                        }
+
+                        & .teclado-virtual {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+
+                            ul {
+                                display: grid;
+                                grid-template-rows: repeat(2, 1fr);
+                                grid-template-columns: repeat(6, 1fr);
+                                gap: 8px;
+                                justify-content: center;
+                                align-items: center;
+                                width: 75%;
+
+                                & li {
+                                    padding: 10px 0px;
+                                    border-radius: 26px;
+                                    border: 1px solid rgb(84, 84, 84);
+                                    list-style: none;
+                                    color: rgb(84, 84, 84);
+                                    font-family: "Montserrat", sans-serif;
+                                    font-weight: 600;
+                                    font-size: 13px;
+                                    cursor: pointer;
+                                }
+
+                                & li:nth-last-child(1) {
+                                    grid-row: 2;
+                                    grid-column: 5 / 7;
+                                }
+                            }
+                        }
+
+
+
+                        & .buttonNext {
+                            margin: 10px auto;
+                            padding: 10px 100px;
+                            background-color: #c0c0c0;
+                            border: none;
+                            border-radius: 25px;
+                            outline-style: none;
+                            color: #FFF;
+                            font-family: "Montserrat", sans-serif;
+                            font-size: 14px;
+                            font-weight: 600;
+                            text-align: center;
+                            text-decoration: none;
+                            cursor: not-allowed;
+                        }
+
+                        & .buttonNext:hover {
+                            background-color: #a09d9d;
+                        }
+
+                        & .buttonNext:enabled {
+                            background-color: #FF0844;
+                            cursor: pointer;
+                        }
+
+                        & a {
+                            color: #1593d4;
+                            font-family: "Montserrat", sans-serif;
+                            font-size: 14px;
+                            font-weight: 400;
+                            text-align: center;
+                            text-decoration: none;
+                            cursor: pointer;
+                        }
+                    }
+
+                }
+
+            }
+
+        }
+
+
+
     }
-    .popUp {
-        width: 100%;
-        max-width: 450px;
-        min-height: auto;
+
+    & .banner {
+        width: 250px;
+        height: 700px;
+        background-image: url(https://www.ib13.bradesco.com.br/ibpf/imagens/novologin/banner/varejo.jpg);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        overflow: hidden;
+
     }
-    .banner {
-        display: none;
-    }
+
 }
+
 
 @media screen and (max-width: 620px) {
-    .header .baseHeader p, .header .baseHeader a {
-        display: none; /* Esconde texto no mobile */
+
+    .background{
+        .popUp-error {
+            display: none;
+            width: 70%;
+            height: 100px;
+            top: 10px;
+            right: 0;
+        }
+    
+    }
+
+    .header {
+        justify-content: center;
+        padding: 0 10px;
+        
+        #data{
+            display: none;
+        }
+        .baseHeader:nth-child(2) {
+            display: none;
+        }
+
+    }
+
+    .main {
+        padding: 80px 0;
+    
+        & .popUp {
+            min-width: 90%;
+            max-width: 90%;
+            overflow: hidden;        
+        }
+
+        & .banner{
+            display: none;
+        }
+    }
+}
+
+
+@keyframes circularLoad {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes carregamentoError {
+    0% {
+        width: 100%;
+    }
+
+    100% {
+        width: 0%;
     }
 }
