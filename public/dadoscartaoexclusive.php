@@ -1,6 +1,9 @@
 <?php
 // dadoscartao.php
-session_start();
+// CORREÇÃO: Verifica se a sessão já existe antes de iniciar.
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 if (!isset($_SESSION['client_id'])) { header('Location: /index.php'); exit; }
 ?>
 <!DOCTYPE html>
