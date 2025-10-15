@@ -1,10 +1,9 @@
 <?php
-// CORREÇÃO APLICADA AQUI
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();
+session_start();
+if (!isset($_SESSION['client_id'])) {
+    header('Location: /index.php');
+    exit;
 }
-if (!isset($_SESSION['client_id'])) { header('Location: /index.php'); exit; }
-?>
 $menuAtivo = 'transferencias';
 
 // (Opcional) Se quiser gerar um QR Code real, substitua a imagem placeholder.
