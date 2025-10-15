@@ -1,0 +1,509 @@
+/* File: css/estilo.css */
+
+/* ————————————————————————————————————————————————————————
+   Variáveis Globais
+   Ajuste apenas estes valores para reposicionar blocos
+   ———————————————————————————————————————————————————————— */
+:root {
+  /* Carrossel controls */
+  --margem-controles: 60px;
+  --margem-botoes: 2px;
+  --margem-pause: 0px;
+  --margem-progress: 6px;
+  --margem-dots: 4px;
+
+  /* CTA “Contrate on-line…” */
+  --margem-cta-text: -32px;
+  --margem-cta-arrow: -32px;
+
+  /* Grid principal de cards abaixo do CTA */
+  --cards-top: 120px;               /* distância do topo da CTA-container */
+  --cards-horiz-margin: 80px;       /* margem horizontal do grupo de cards */
+  --card-width: 190px;
+  --card-height: 220px;
+  --card-gap: 24px;
+
+  /* Seção “Produtos e serviços…” */
+  --produtos-top: 1550px;            /* distância do topo da CTA-container */
+  --produtos-left: 800px;            /* distância da esquerda */
+  --produtos-max-width: 500px;      /* largura máxima do bloco de texto */
+  --produtos-titulo-size: 32px;
+  --produtos-titulo-line: 39px;
+  --produtos-letter-spacing: 0.5px;
+  --produtos-margin-bot-titulo: 15px;
+  --produtos-sub-size: 18px;
+  --produtos-sub-line: 25px;
+  --produtos-sub-color: #333;
+
+  /* Grid de serviços (ícones) */
+  --servicos-top: 1550px;            /* distância do topo da CTA-container */
+  --servicos-left: 1200px;            /* alinhamento horizontal */
+  --servicos-gap: 15px;
+  --servico-width: 160px;
+  --servico-height: 170px;
+
+  /* Novidades / continuação */
+  --texto-top-novidades: 60px;
+  --texto-left-novidades: 60px;
+
+  /* Facilidade (última seção) */
+  --titulo-facilidade-size: 28px;
+  --subtexto-facilidade-size: 16px;
+  --subtexto-largura: 200px;
+}
+
+  @keyframes progressAnim {
+    from { width: 0%; }
+    to { width: 100%; }
+  }
+
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Fonte padrão */
+html, body {
+  font-family: Arial, sans-serif;
+  height: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+/* ————————————————————————————————————————————————————————
+   Topbar / Header
+   ———————————————————————————————————————————————————————— */
+.topbar {
+  width: 100%;
+  height: 41px;
+  background: linear-gradient(90deg, #CC092F 40%, #B81570 90%);
+  position: relative;
+  overflow: hidden;
+}
+
+.header-container {
+  position: relative;
+  width: 1800px;
+  height: 60px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.ico-cadeado {
+  position: absolute; top: 1px; left: 0;
+  width: 17px; height: 30px;
+}
+
+.access-text {
+  position: absolute; top: 15px; left: 25px;
+  font-size: 11px; text-transform: uppercase;
+  color: #FFF; font-weight: 400;
+}
+
+.vertical-divider {
+  position: absolute; top: 10px; left: 160px;
+  width: 2px; height: 18px; background: #8B0E57;
+}
+
+.campo-agencia {
+  position: absolute; top: 8px; left: 180px;
+  display: flex; align-items: center;
+}
+.campo-agencia .lbl-branco {
+  color: #FFF; font-weight: 700; font-size: 12px;
+  margin-right: 5px;
+}
+.campo-agencia .input-min {
+  width: 50px; height: 26px; border-radius: 30px;
+  border: none; padding: 0 8px;
+}
+
+.campo-conta {
+  position: absolute; top: 7px; left: 295px;
+  display: flex; align-items: center;
+}
+.campo-conta .lbl-branco {
+  color: #FFF; font-weight: 700; font-size: 12px;
+  margin-right: 8px;
+}
+.campo-conta .input-min {
+  width: 70px; height: 27px; border-radius: 30px;
+  border: none; padding: 0 8px; margin-right: 8px;
+}
+.campo-conta .input-digito {
+  width: 28px; height: 28px; border-radius: 50%;
+  border: none; padding: 0 8px;
+}
+
+.btn-ok {
+  position: absolute; top: 7px; left: 455px;
+  width: 28px; height: 25px; background: #9D0B21;
+  color: #FFF; border: none; border-radius: 3px;
+  font-weight: 700; font-size: 12px; cursor: pointer;
+}
+
+.como-usar {
+  position: absolute; top: 9px; left: 615px;
+  display: flex; align-items: center;
+}
+.como-usar-text {
+  font-size: 10px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 1px;
+  color: #FFF; margin-right: 5px;
+}
+.ico-usar {
+  width: 22px; height: 22px;
+}
+
+.divider-meio {
+  position: absolute; top: 10px; left: 600px;
+  width: 1px; height: 17px; background: #8B0E57;
+}
+
+.acessibilidade-text {
+  position: absolute; top: 17px; right: 50px;
+  font-size: 10px; text-transform: uppercase;
+  color: #FFF;
+}
+.ico-acessibilidade {
+  position: absolute; top: 9px; right: 17px;
+  width: 28px; height: 28px;
+}
+
+@media (max-width: 768px) {
+  .header-container, .topbar { width:100%; height:auto; padding:10px; }
+  .ico-cadeado, .access-text, .vertical-divider,
+  .campo-agencia, .campo-conta, .btn-ok,
+  .como-usar, .divider-meio,
+  .acessibilidade-text, .ico-acessibilidade {
+    position: static; margin-bottom: 8px;
+  }
+}
+
+.checkbox-lembrar {
+  position: absolute;
+  top: 13px;
+  left: 495px;
+  display: flex;
+  align-items: center;
+}
+.checkbox-lembrar input[type="checkbox"] {
+  width: 13px;
+  height: 13px;
+  border: 1px solid #767676;
+  border-radius: 2.5px;
+}
+.checkbox-lembrar label {
+  margin-left: 5px;
+  color: #FFFFFF;
+  font-weight: 700;
+  font-size: 12px;
+}
+
+.divider-meio {
+  position: absolute;
+  top: 10px;
+  left: 600px; /* ajuste aqui pra mover o divider pra direita ou esquerda */
+  width: 1px;
+  height: 17px;
+  background: #8B0E57;
+}
+
+.como-usar {
+  position: absolute;
+  top: 9px;
+  left: 615px;
+  display: flex;
+  align-items: center;
+}
+.como-usar-text {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #FFFFFF;
+  margin-right: 5px;
+}
+.ico-usar {
+  width: 22px;
+  height: 22px;
+}
+
+/* ————————————————————————————————————————————————————————
+   Carrossel
+   ———————————————————————————————————————————————————————— */
+.carrossel {
+  position: relative; width:100%; height:1000px; overflow:hidden;
+}
+.slides { width:100%; height:100%; position:relative; }
+.slide {
+  position:absolute; width:100%; height:100%;
+  background-size:cover; background-position:center;
+  opacity:0; transition:opacity 1s ease-in-out;
+}
+.slide.active { opacity:1; z-index:1; }
+.gradient-overlay {
+  position:absolute; top:0; left:0; width:101%; height:18%;
+  pointer-events:none; z-index:2;
+}
+.carousel-controls {
+  position:absolute; bottom:var(--margem-controles);
+  left:50%; transform:translateX(-50%); z-index:3;
+  display:flex; align-items:center; gap:10px;
+}
+.circle-button {
+  background:transparent; border:1px solid #FFF;
+  color:#FFF; width:28px; height:28px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  cursor:pointer; font-size:14px;
+  margin-top: var(--margem-botoes);
+}
+.progress-bar {
+  width:160px; height:6px; border:1px solid #E4E4E4;
+  border-radius:30px; overflow:hidden; background:#000;
+  margin-top: var(--margem-progress);
+}
+.progress-fill { width:0%; height:100%; background:#f0f0f0; }
+.dots { display:flex; gap:5px; margin-top: var(--margem-dots); }
+.dot {
+  width:8px; height:8px; border:2px solid #FFF;
+  border-radius:50%; background:transparent;
+}
+.dot.active { background:#FFF; }
+
+/* menu lateral overlay */
+.menu-lateral-overlay {
+  position:absolute; top:80px; left:50px;
+  width:180px; height:auto; z-index:2; pointer-events:none;
+}
+
+/* ————————————————————————————————————————————————————————
+   CTA Container
+   ———————————————————————————————————————————————————————— */
+.cta-container {
+  position:relative;
+  width:calc(100% - 20px); max-width:2000px;
+  height: var(--altura-cta,160px);
+  background:#EBEBEB;
+  margin: var(--offset-vertical,-10px) auto 0;
+  z-index:4; border-radius:4px;
+  box-shadow:0 2px 10px rgba(0,0,0,0.08);
+  transition:all .3s ease;
+}
+.cta-content {
+  width:100%; height:100%;
+  display:flex; justify-content:center; align-items:center;
+  position:relative;
+}
+.cta-text {
+  font-family:'Inter',sans-serif; font-size:25px;
+  font-weight:700; color:#3C3C3C; text-align:center;
+  margin-top: var(--margem-cta-text);
+}
+.cta-arrow {
+  width:28px; height:28px; margin-left:10px;
+  margin-top: var(--margem-cta-arrow);
+}
+@media (max-width:768px) {
+  .cta-text { font-size:18px; line-height:24px; }
+  .cta-arrow { right:10%; }
+}
+
+/* ————————————————————————————————————————————————————————
+   Grid principal de cards (Renegocie…)
+   ———————————————————————————————————————————————————————— */
+.cards-box {
+  position:absolute;
+  top: var(--cards-top);
+  left: var(--cards-horiz-margin);
+  right: var(--cards-horiz-margin);
+  display:flex; justify-content:center;
+  gap: var(--card-gap);
+  z-index:5;
+}
+.card {
+  width:var(--card-width); height:var(--card-height);
+  background:#FFF; border-radius:8px;
+  display:flex; flex-direction:column;
+  justify-content:space-between; padding:15px 10px;
+  box-shadow:0 1px 3px rgba(0,0,0,0.1);
+  transition:transform .2s ease;
+}
+.card img {
+  width:120px; margin:0 auto;
+}
+.card p {
+  font-size:17px; color:#333; margin-top:10px;
+  min-height:38px; text-align:center; display:flex;
+  align-items:center; justify-content:center;
+}
+
+/* ————————————————————————————————————————————————————————
+   Seção “Produtos e serviços…”
+   ———————————————————————————————————————————————————————— */
+.produtos-servicos {
+  position:absolute;
+  top: var(--produtos-top);
+  left: var(--produtos-left);
+  max-width: var(--produtos-max-width);
+  z-index:5;
+}
+.titulo-gradiente {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: var(--produtos-titulo-size);
+  line-height: var(--produtos-titulo-line);
+  letter-spacing: var(--produtos-letter-spacing);
+  margin-bottom: var(--produtos-margin-bot-titulo);
+
+  background: linear-gradient(90deg, #F36279 0%, #CC092F 10%, #B41A83 70%);
+  background-clip: text;             /* standard property */
+  -webkit-background-clip: text;     /* WebKit fallback */
+  color: transparent;                /* make text transparent so gradient shows */
+  -webkit-text-fill-color: transparent; /* WebKit fallback */
+}
+
+.subtexto {
+  font-family:'Inter',sans-serif; font-weight:400;
+  font-size: var(--produtos-sub-size);
+  line-height: var(--produtos-sub-line);
+  color: var(--produtos-sub-color);
+}
+
+/* ————————————————————————————————————————————————————————
+   Grid de serviços (ícones “FALE CONOSCO”…)
+   ———————————————————————————————————————————————————————— */
+.cards-servicos {
+  position:absolute;
+  top: var(--servicos-top);
+  left: var(--servicos-left);
+  z-index:5;
+}
+.cards-grid {
+  display:grid;
+  grid-template-columns: repeat(3, var(--servico-width));
+  grid-template-rows: repeat(2, var(--servico-height));
+  gap: var(--servicos-gap);
+}
+.servico-card {
+  background:#FFF; border-radius:8px;
+  box-shadow:0 2px 5px rgba(0,0,0,0.1);
+  display:flex; flex-direction:column;
+  align-items:center; justify-content:center;
+  width:var(--servico-width); height:var(--servico-height);
+  padding:18px 10px;
+}
+.servico-card img {
+  width:60px; margin-bottom:10px;
+}
+.servico-card p {
+  font-size:12px; font-weight:700; color:#080003;
+  text-align:center; line-height:1.2;
+}
+
+/* ————————————————————————————————————————————————————————
+   Seções de fundo / novidades / facilidades
+   ———————————————————————————————————————————————————————— */
+.fundo-novidades {
+  width:90%; margin-top:50px;
+}
+.imagem-com-texto {
+  position:relative; width:100%; height:auto;
+}
+.fundo-diagonal {
+  width:100%; display:block;
+}
+.texto-novidades {
+  position:absolute; top: var(--texto-top-novidades);
+  left: var(--texto-left-novidades);
+  color:#FFF; z-index:2; max-width:500px;
+  font-family:'Inter',sans-serif;
+}
+.titulo-facilidade {
+  font-size: var(--titulo-facilidade-size);
+  font-weight:700; line-height:36px; margin-bottom:15px;
+}
+.subtexto-facilidade {
+  font-size: var(--subtexto-facilidade-size);
+  font-weight:400; line-height:24px;
+  max-width: var(--subtexto-largura);
+}
+
+/* ————————————————————————————————————————————————————————
+   Overlay de carregamento
+   ———————————————————————————————————————————————————————— */
+.load {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(189, 185, 185, 0.356);
+  z-index: 99;
+  display: none;
+  justify-content: center;
+  align-items: flex-start;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding-top: 250px;
+}
+
+.container-load {
+  width: 70px;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.circle {
+  width: 20px;
+  height: 20px;
+  background-color: #e60039;
+  border-radius: 50%;
+  animation: pulse 0.6s infinite alternate;
+}
+
+.circle:nth-child(2) {
+  animation-delay: 0.3s;
+}
+
+@keyframes pulse {
+  to {
+    transform: scale(1.5);
+    opacity: 0.6;
+  }
+}
+
+/* ————————————————————————————————————————————————————————
+   Popup de erro (se usar)
+   ———————————————————————————————————————————————————————— */
+.popUp-error {
+  display:none; position:fixed; top:10px; right:10px;
+  width:400px; height:120px; background:#FF0846F8;
+  box-shadow:1px 1px 4px rgba(148,145,145,0.34);
+  border-radius:10px; z-index:10000; overflow:hidden;
+  transition:all .3s linear;
+}
+.popUp-error .erro {
+  width:100%; height:80%;
+  display:flex; justify-content:center; align-items:center;
+}
+.popUp-error .erro p {
+  padding:0 10px; font-family:'Montserrat',sans-serif;
+  font-size:14px; color:#FFF; font-weight:400;
+}
+.popUp-error .carregar {
+  position:absolute; bottom:0; width:100%; height:15px;
+  background:#FF0846F8;
+}
+.popUp-error .carregar .temp-carregamento {
+  position:absolute; right:0; width:100%; height:100%;
+  background:#FFF; border-radius:5px 0 0 5px;
+  animation:carregamentoError 2s .4s linear forwards;
+}
+
+@keyframes carregamentoError {
+  to { width:0; }
+}

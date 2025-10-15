@@ -1,0 +1,11 @@
+<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px'
+    width='28.5px' height='28.6px' viewBox='0 0 18.5 18.6' enable-background='new 0 0 18.5 18.6' xml:space='preserve'>
+    <g id='Camada_2' display='none'>
+        <rect x='-7' y='-11.5' display='inline' fill='#DD8B14' width='40.1' height='41' />
+    </g>
+    <g id='Lupa'>
+        <circle fill='none' stroke='#FFFFFF' stroke-width='2.5' cx='8.6' cy='8.3' r='6.7' />
+        <path fill='none' stroke='#FFFFFF' stroke-width='2.5' stroke-linecap='square' stroke-linejoin='bevel'
+            d='M13.5,12.9l2.8,3.5' />
+    </g>
+</svg>
