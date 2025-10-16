@@ -85,7 +85,8 @@ html, body {
 
 .header-container {
   position: relative;
-  width: 1800px;
+  width: 100%;           /* ADICIONE: Ocupa 100% da largura disponível */
+  max-width: 1800px;     /* ALTERE: Define um limite máximo de 1800px */
   height: 60px;
   margin: 0 auto;
   padding: 0 20px;
